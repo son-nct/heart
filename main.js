@@ -1,3 +1,35 @@
+var anniversaryDate = document.getElementById("anniversaryDate");
+var typewriter = new Typewriter(anniversaryDate, {
+  loop: false,
+  delay: 75,
+});
+
+typewriter
+  .pauseFor(0)
+  .typeString('"I love you for all that you are,')
+  .pauseFor(300)
+  .typeString("<br/>all that you have been")
+  .pauseFor(300)
+  .typeString('<br/>and all that you will be."')
+  .changeDeleteSpeed(100)
+  .deleteAll()
+  .typeString("<br/>This is my special gift to you <strong style='color: red'>❤</strong>")
+  .changeDeleteSpeed(10)
+  .pauseFor(1000)
+  .deleteAll()
+  .typeString("<br/> <h1>3</h1>")
+  .deleteAll()
+  .typeString("<br/> <h1>2</h1>")
+  .deleteAll()
+  .typeString("<br/> <h1>1</h1>")
+  .deleteAll()
+  .callFunction(() => {
+    anniversaryDate.style.display = "none";
+    const heartAnimation = document.querySelector(".heart-animation");
+    heartAnimation.classList.add("animate-heart");
+  })
+  .start();
+
 let particles = [];
 let microparticles = [];
 
@@ -9,7 +41,6 @@ const c1 = createCanvas({
 const tela = c1.canvas;
 const canvas = c1.context;
 
-// $("body").append(tela);
 $("body").append(c1.canvas);
 
 class Particle1 {
@@ -21,8 +52,7 @@ class Particle1 {
     this.canvas = canvas;
     this.life = 1000 + Math.random() * 3000;
 
-    this.x =
-      $(window).width() / 2 + (Math.random() * 20 - Math.random() * 20);
+    this.x = $(window).width() / 2 + (Math.random() * 20 - Math.random() * 20);
     this.y = $(window).height();
     this.s = 2 + Math.random();
     this.w = $(window).width();
@@ -32,7 +62,7 @@ class Particle1 {
     this.color = "#ff417d";
 
     this.ID = setInterval(
-      function() {
+      function () {
         microparticles.push(
           new microParticle(c1.context, {
             x: this.x,
@@ -44,7 +74,7 @@ class Particle1 {
     );
 
     setTimeout(
-      function() {
+      function () {
         clearInterval(this.ID);
       }.bind(this),
       this.life
@@ -66,9 +96,7 @@ class Particle1 {
 
   move() {
     this.x -=
-      this.direction *
-      Math.sin(this.progress / (this.random1 * 430)) *
-      this.s;
+      this.direction * Math.sin(this.progress / (this.random1 * 430)) * this.s;
     this.y -= Math.cos(this.progress / this.h) * this.s;
 
     if (this.x < 0 || this.x > this.w - this.radius) {
@@ -134,7 +162,7 @@ class microParticle {
 var random_life = 1000;
 
 setInterval(
-  function() {
+  function () {
     particles.push(new Particle1(canvas));
     random_life = 2000 * Math.random();
   }.bind(this),
@@ -166,10 +194,10 @@ function blur(ctx, canvas, amt) {
 
 function update() {
   clear();
-  particles = particles.filter(function(p) {
+  particles = particles.filter(function (p) {
     return p.move();
   });
-  microparticles = microparticles.filter(function(mp) {
+  microparticles = microparticles.filter(function (mp) {
     return mp.move();
   });
   requestAnimationFrame(update.bind(this));
