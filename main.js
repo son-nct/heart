@@ -6,17 +6,6 @@ var typewriter = new Typewriter(anniversaryDate, {
 
 typewriter
   .pauseFor(0)
-  .typeString('"I love you for all that you are,')
-  .pauseFor(300)
-  .typeString("<br/>all that you have been")
-  .pauseFor(300)
-  .typeString('<br/>and all that you will be."')
-  .changeDeleteSpeed(100)
-  .deleteAll()
-  .typeString("<br/>This is my special gift to you <strong style='color: red'>❤</strong>")
-  .changeDeleteSpeed(10)
-  .pauseFor(1000)
-  .deleteAll()
   .typeString("<br/> <h1>3</h1>")
   .deleteAll()
   .typeString("<br/> <h1>2</h1>")
